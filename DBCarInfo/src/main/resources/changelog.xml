@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1" author="Aliaksandrby">
+        <sql>
+            CREATE TABLE IF NOT EXISTS t_car (
+                id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                brand VARCHAR(50),
+                full_name VARCHAR(50),
+                type_body VARCHAR(50),
+                class_auto VARCHAR(50),
+                color VARCHAR(50),
+                engine_description VARCHAR(50),
+                price DEC(6,2),
+                path_to_image VARCHAR(255)
+            );
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

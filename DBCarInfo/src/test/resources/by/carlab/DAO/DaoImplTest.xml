@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+<t_car id="1" brand="audi" full_name="a6 allroad" type_body="sedan" class_auto="economy class" color="red"
+            engine_description="1.9 TDI" price="40.55" path_to_image="1"/>
+</dataset>
