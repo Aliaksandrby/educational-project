@@ -21,16 +21,15 @@
             <th>Make order</th>
         </tr>
         <tr>
-            <td><img src=<c:out value="${carInfo.pathToImage}"/>></td>
+            <td><img src=<c:out value="${car.image}"/>></td>
             <td>
-                brand: <c:out value="${carInfo.brand}"/><br>
-                full name: <c:out value="${carInfo.fullName}"/><br>
-                type body: <c:out value="${carInfo.typeBody}"/><br>
-                class auto: <c:out value="${carInfo.classAuto}"/><br>
-                color: <c:out value="${carInfo.color}"/><br>
-                engine description: <c:out value="${carInfo.engineDescription}"/>
+                Name car: <c:out value="${car.nameCar}"/><br>
+                Type of body: <c:out value="${car.typeOfBody}"/><br>
+                Type engine: <c:out value="${car.typeEngine}"/><br>
+                Type transmission: <c:out value="${car.typeTransmission}"/><br>
+                Year of issue: <c:out value="${car.yearOfIssue}"/><br>
             </td>
-            <td><c:out value="${carInfo.price}"/></td>
+            <td><c:out value="${car.price}"/></td>
             <td><a href="">Order</a></td>
         </tr>
     </Table>

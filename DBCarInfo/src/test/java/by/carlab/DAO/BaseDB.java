@@ -1,7 +1,7 @@
 package by.carlab.DAO;
 
 import by.carlab.config.MysqlJdbcDataSource;
-import by.carlab.pojo.CarInfo;
+import by.carlab.pojo.Car;
 import lombok.SneakyThrows;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.ext.mysql.MySqlConnection;
@@ -30,7 +30,7 @@ public class BaseDB {
                 .configure("rent_db_test.xml")
                 .build();
         Metadata metadata = new MetadataSources( standardRegistry )
-                .addAnnotatedClass(CarInfo.class)
+                .addAnnotatedClass(Car.class)
                 .getMetadataBuilder()
                 .build();
         testSessionFactory = metadata.getSessionFactoryBuilder()

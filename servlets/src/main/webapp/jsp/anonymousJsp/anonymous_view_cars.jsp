@@ -200,16 +200,15 @@
             <th>Description</th>
             <th>Price (BYN)</th>
         </tr>
-        <c:forEach items="${carInfoList}" var="car">
+        <c:forEach items="${carList}" var="car">
         <tr>
-            <td><img src=<c:out value="${car.pathToImage}"/>></td>
+            <td><img src=<c:out value="${car.image}"/>></td>
             <td>
-                brand: <c:out value="${car.brand}"/><br>
-                full name: <c:out value="${car.fullName}"/><br>
-                type body: <c:out value="${car.typeBody}"/><br>
-                class auto: <c:out value="${car.classAuto}"/><br>
-                color: <c:out value="${car.color}"/><br>
-                engine description: <c:out value="${car.engineDescription}"/>
+                Name car: <c:out value="${car.nameCar}"/><br>
+                Type of body: <c:out value="${car.typeOfBody}"/><br>
+                Type engine: <c:out value="${car.typeEngine}"/><br>
+                Type transmission: <c:out value="${car.typeTransmission}"/><br>
+                Year of issue: <c:out value="${car.yearOfIssue}"/><br>
             </td>
             <td><c:out value="${car.price}"/></td>
         </tr>

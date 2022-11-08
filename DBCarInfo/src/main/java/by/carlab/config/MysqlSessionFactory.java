@@ -1,6 +1,6 @@
 package by.carlab.config;
 
-import by.carlab.pojo.CarInfo;
+import by.carlab.pojo.Car;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -28,7 +28,7 @@ public final class MysqlSessionFactory {
                 .build();
 
         Metadata metadata = new MetadataSources(standardRegistry)
-                .addAnnotatedClass(CarInfo.class)
+                .addAnnotatedClass(Car.class)
                 .getMetadataBuilder()
                 .build();
 

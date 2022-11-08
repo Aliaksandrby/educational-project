@@ -2,7 +2,7 @@ package by.carlab.adminServlets;
 
 import by.carlab.DAO.Dao;
 import by.carlab.DAO.DaoImpl;
-import by.carlab.pojo.CarInfo;
+import by.carlab.pojo.Car;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,12 +18,12 @@ public class AdminDeleteCarServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         final Dao carDao = new DaoImpl();
         String carId = req.getParameter("carId");
-        CarInfo carInfo = carDao.findById(Integer.parseInt(carId));
-        carDao.delete(carInfo);
+        Car car = carDao.findById(Integer.parseInt(carId));
+        carDao.delete(car);
 
-        List<CarInfo> carInfoList = carDao.readNotes();
+        List<Car> carList = carDao.readNotes();
 
-        req.setAttribute("carInfoList", carInfoList);
+        req.setAttribute("carList", carList);
         getServletContext().getRequestDispatcher("/jsp/adminJsp/admin_view_cars.jsp").forward(req, resp);
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <dataset>
-<t_car id="1" brand="audi" full_name="a6 allroad" type_body="sedan" class_auto="economy class" color="red"
-            engine_description="1.9 TDI" price="40.55" path_to_image="1"/>
+<t_car id="1" name_car="volkswagen polo" type_of_body="sedan" type_engine="gas/1600"
+       type_transmission="automatic transmission" year_of_issue="9999" image="image" price="100.55"/>
 </dataset>

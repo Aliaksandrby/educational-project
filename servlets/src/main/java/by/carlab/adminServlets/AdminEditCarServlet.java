@@ -2,7 +2,7 @@ package by.carlab.adminServlets;
 
 import by.carlab.DAO.Dao;
 import by.carlab.DAO.DaoImpl;
-import by.carlab.pojo.CarInfo;
+import by.carlab.pojo.Car;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,13 +16,13 @@ import java.util.List;
 public class AdminEditCarServlet extends HttpServlet {
 
     private final Dao carDao = new DaoImpl();
-    private CarInfo carInfo;
+    private Car car;
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String carId = req.getParameter("carId");
-        carInfo = carDao.findById(Integer.parseInt(carId));
+        car = carDao.findById(Integer.parseInt(carId));
         getServletContext().getRequestDispatcher("/jsp/adminJsp/admin_edit_car.jsp").forward(req,resp);
 
     }
@@ -30,29 +30,27 @@ public class AdminEditCarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String brand = req.getParameter("brand");
-        String fullName = req.getParameter("fullName");
-        String typeBody = req.getParameter("typeBody");
-        String classAuto = req.getParameter("classAuto");
-        String color = req.getParameter("color");
-        String engineDescription = req.getParameter("engineDescription");
+        String nameCar = req.getParameter("nameCar");
+        String typeOfBody = req.getParameter("typeOfBody");
+        String typeEngine = req.getParameter("typeEngine");
+        String typeTransmission = req.getParameter("typeTransmission");
+        int yearOfIssue = Integer.parseInt(req.getParameter("yearOfIssue"));
+        String image = req.getParameter("image");
         double price = Double.parseDouble(req.getParameter("price"));
-        String pathToImage = req.getParameter("pathToImage");
 
-        carInfo.setBrand(brand);
-        carInfo.setFullName(fullName);
-        carInfo.setTypeBody(typeBody);
-        carInfo.setClassAuto(classAuto);
-        carInfo.setColor(color);
-        carInfo.setEngineDescription(engineDescription);
-        carInfo.setPrice(price);
-        carInfo.setPathToImage(pathToImage);
+        car.setNameCar(nameCar);
+        car.setTypeOfBody(typeOfBody);
+        car.setTypeEngine(typeEngine);
+        car.setTypeTransmission(typeTransmission);
+        car.setYearOfIssue(yearOfIssue);
+        car.setImage(image);
+        car.setPrice(price);
 
-        carDao.update(carInfo);
+        carDao.update(car);
 
-        List<CarInfo> carInfoList = carDao.readNotes();
+        List<Car> carList = carDao.readNotes();
 
-        req.setAttribute("carInfoList", carInfoList);
+        req.setAttribute("carList", carList);
         getServletContext().getRequestDispatcher("/jsp/adminJsp/admin_view_cars.jsp").forward(req,resp);
     }
 }

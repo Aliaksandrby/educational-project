@@ -9,14 +9,13 @@
         <sql>
             CREATE TABLE IF NOT EXISTS t_car (
                 id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                brand VARCHAR(50),
-                full_name VARCHAR(50),
-                type_body VARCHAR(50),
-                class_auto VARCHAR(50),
-                color VARCHAR(50),
-                engine_description VARCHAR(50),
-                price DEC(6,2),
-                path_to_image VARCHAR(255)
+                name_car VARCHAR(50),
+                type_of_body VARCHAR(50),
+                type_engine VARCHAR(50),
+                type_transmission VARCHAR(50),
+                year_of_issue INT,
+                image VARCHAR(50),
+                price DEC(8,2)
             );
         </sql>
     </changeSet>

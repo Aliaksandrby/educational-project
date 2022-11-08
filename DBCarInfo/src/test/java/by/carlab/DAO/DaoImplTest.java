@@ -1,6 +1,6 @@
 package by.carlab.DAO;
 
-import by.carlab.pojo.CarInfo;
+import by.carlab.pojo.Car;
 import lombok.SneakyThrows;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
@@ -42,9 +42,9 @@ public class DaoImplTest extends BaseDB{
 
 
         //When
-        CarInfo carInfo = new CarInfo("bmw","x1","hatchback",
-                "medium","black","electron",100.00,"");
-        targetObject.create(carInfo);
+        Car car = new Car("super car","super body","super engine",
+                "super transmission", 1000, "super image",100.55);
+        targetObject.create(car);
 
         //Then
         resultSet = connection.createStatement().executeQuery("select count(*) from t_car;");
@@ -66,20 +66,18 @@ public class DaoImplTest extends BaseDB{
         DatabaseOperation.CLEAN_INSERT.execute(iDatabaseConnection, dataSet);
 
         //When
-        List<CarInfo> carInfoList = targetObject.readNotes();
+        List<Car> carList = targetObject.readNotes();
 
         //Then
-        assertEquals(1, carInfoList.size());
-        assertEquals("1", carInfoList.get(0).getId().toString());
-        assertEquals("audi", carInfoList.get(0).getBrand());
-        assertEquals("a6 allroad", carInfoList.get(0).getFullName());
-        assertEquals("sedan", carInfoList.get(0).getTypeBody());
-        assertEquals("economy class", carInfoList.get(0).getClassAuto());
-        assertEquals("red", carInfoList.get(0).getColor());
-        assertEquals("1.9 TDI", carInfoList.get(0).getEngineDescription());
-        assertEquals("40.55", Double.toString(carInfoList.get(0).getPrice()));
-        assertEquals("1", carInfoList.get(0).getPathToImage());
-
+        assertEquals(1, carList.size());
+        assertEquals("1", carList.get(0).getId().toString());
+        assertEquals("volkswagen polo", carList.get(0).getNameCar());
+        assertEquals("sedan", carList.get(0).getTypeOfBody());
+        assertEquals("gas/1600", carList.get(0).getTypeEngine());
+        assertEquals("automatic transmission", carList.get(0).getTypeTransmission());
+        assertEquals(9999, carList.get(0).getYearOfIssue());
+        assertEquals("image", carList.get(0).getImage());
+        assertEquals("100.55", "" + carList.get(0).getPrice());
         DatabaseOperation.DELETE.execute(iDatabaseConnection, dataSet);
     }
 
@@ -98,9 +96,9 @@ public class DaoImplTest extends BaseDB{
         DatabaseOperation.CLEAN_INSERT.execute(iDatabaseConnection, dataSet);
 
         //When
-        CarInfo carInfo = targetObject.findById(1);
-        assertNotNull(carInfo);
-        targetObject.delete(carInfo);
+        Car car = targetObject.findById(1);
+        assertNotNull(car);
+        targetObject.delete(car);
 
         //Then
         Connection conn = testMysqlJdbcDataSource.getConnection();
@@ -140,35 +138,9 @@ public class DaoImplTest extends BaseDB{
         DatabaseOperation.CLEAN_INSERT.execute(iDatabaseConnection, dataSet);
 
         //When
-        CarInfo carInfo = targetObject.findById(1);
+        Car car = targetObject.findById(1);
 
         //Then
-        assertEquals("a6 allroad", carInfo.getFullName());
+        assertEquals("volkswagen polo", car.getNameCar());
     }
-
-    /*@Test
-    @SneakyThrows
-    public void readAll() {
-        //Given
-        IDataSet dataSet = new FlatXmlDataSetBuilder()
-                .build(DaoImplTest.class.getResourceAsStream("DaoImplTest.xml"));
-        DatabaseOperation.CLEAN_INSERT.execute(iDatabaseConnection, dataSet);
-
-        //When
-        List<CarInfo> carInfoList = targetObject.readAll();
-
-        //Then
-        assertEquals(1, carInfoList.size());
-        assertEquals("1", carInfoList.get(0).getId().toString());
-        assertEquals("audi", carInfoList.get(0).getBrand());
-        assertEquals("a6 allroad", carInfoList.get(0).getFullName());
-        assertEquals("sedan", carInfoList.get(0).getTypeBody());
-        assertEquals("economy class", carInfoList.get(0).getClassAuto());
-        assertEquals("red", carInfoList.get(0).getColor());
-        assertEquals("1.9 TDI", carInfoList.get(0).getEngineDescription());
-        assertEquals("40.55", Double.toString(carInfoList.get(0).getPrice()));
-        assertEquals("1", carInfoList.get(0).getPathToImage());
-
-        DatabaseOperation.DELETE.execute(iDatabaseConnection, dataSet);
-    }*/
 }

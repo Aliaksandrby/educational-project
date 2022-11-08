@@ -8,29 +8,28 @@
 
         <form action="/car/edit.do" method="post">
 
-            <label for="brand">Brand: </label><br>
-            <input type="text" id="brand" name="brand" required><br>
+            <label for="nameCar">Name Car: </label><br>
+            <input type="text" id="nameCar" name="nameCar" required><br>
 
-            <label for="fullName">Full name: </label><br>
-            <input type="text" id="fullName" name="fullName" required><br>
+            <label for="typeOfBody">Type of body: </label><br>
+            <input type="text" id="typeOfBody" name="typeOfBody" required><br>
 
-            <label for="typeBody">Type body: </label><br>
-            <input type="text" id="typeBody" name="typeBody"required><br>
+            <label for="typeEngine">Type engine: </label><br>
+            <input type="text" id="typeEngine" name="typeEngine" required><br>
 
-            <label for="classAuto">Class auto: </label><br>
-            <input type="text" id="classAuto" name="classAuto" required><br>
+            <label for="typeTransmission">Type transmission: </label><br>
+            <input type="text" id="typeTransmission" name="typeTransmission" required><br>
 
-            <label for="color">Color: </label><br>
-            <input type="text" id="color" name="color" required><br>
-
-            <label for="engineDescription">Engine description: </label><br>
-            <input type="text" id="engineDescription" name="engineDescription" required><br>
+            <label for="yearOfIssue">Year of issue: </label><br>
+            <input type="text" id="yearOfIssue" name="yearOfIssue" required><br>
 
             <label for="price">Price: </label><br>
             <input type="text" id="price" name="price" required><br>
 
-            <label for="pathToImage">Path to image: </label><br>
-            <input type="text" id="pathToImage" name="pathToImage" required><br>
+
+
+            <label for="image">image: </label><br>
+            <input type="text" id="image" name="image" required><br>
 
             <br>
             <input type="submit">

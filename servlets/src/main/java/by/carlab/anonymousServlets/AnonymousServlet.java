@@ -1,7 +1,7 @@
 package by.carlab.anonymousServlets;
 
 import by.carlab.DAO.DaoImpl;
-import by.carlab.pojo.CarInfo;
+import by.carlab.pojo.Car;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -15,17 +15,17 @@ import java.util.List;
 @WebServlet("/anonymous")
 public class AnonymousServlet extends HttpServlet {
 
-    private List<CarInfo> carInfoList;
+    private List<Car> carList;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        carInfoList = new DaoImpl().readNotes();
+        carList = new DaoImpl().readNotes();
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("carInfoList", carInfoList);
+        request.setAttribute("carList", carList);
         getServletContext().getRequestDispatcher("/jsp/anonymousJsp/anonymous_view_cars.jsp").forward(request,response);
     }
 }
